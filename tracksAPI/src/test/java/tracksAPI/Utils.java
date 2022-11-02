@@ -33,6 +33,8 @@ public class Utils {
         Gson gson = new GsonBuilder().create();
         Response response = gson.fromJson(result.toString(), Response.class);
 
+
+        r.date = conn.getHeaderField("Date");
         r.setResponseTimeMs(finish - start);
         r.setResponse(response);
         r.setResponseCode(conn.getResponseCode());

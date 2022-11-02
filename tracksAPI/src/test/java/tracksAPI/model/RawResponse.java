@@ -1,15 +1,22 @@
 package tracksAPI.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
+import java.util.Map;
 
 public class RawResponse {
 
     public Response response;
     public int responseCode;
     public long responseTimeMs;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String date;
 
     public RawResponse() {}
 

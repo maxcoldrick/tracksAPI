@@ -81,5 +81,7 @@ public class StepDefinitions {
 
     @Then("the response header has a valid date")
     public void theResponseHeaderHasAValidDate() {
+        assertNotNull(rawResponse.getDate());
+        assertNotEquals(rawResponse.getDate(), "");
     }
 }
