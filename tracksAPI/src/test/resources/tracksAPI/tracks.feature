@@ -1,7 +1,7 @@
 Feature: An example
 
   @automated
-  Scenario: Correct response code
+  Scenario: Correct response code and acceptable latency
     Given an authenticated user
     When a GET request is sent to "https://testapi.io/api/ottplatform/media"
     Then the response code is 200

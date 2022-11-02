@@ -16,4 +16,28 @@ public class TitleList {
     @Expose
     private Object tertiary;
 
+    public String getPrimary() {
+        return primary;
+    }
+
+    public void setPrimary(String primary) {
+        this.primary = primary;
+    }
+
+    public String getSecondary() {
+        return secondary;
+    }
+
+    public void setSecondary(String secondary) {
+        this.secondary = secondary;
+    }
+
+    public Object getTertiary() {
+        return tertiary;
+    }
+
+    public void setTertiary(Object tertiary) {
+        this.tertiary = tertiary;
+    }
+
 }

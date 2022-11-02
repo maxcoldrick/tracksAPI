@@ -4,8 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import tracksAPI.model.Data;
 import tracksAPI.model.RawResponse;
-import tracksAPI.model.Response;
 
 import static org.junit.Assert.*;
 
@@ -35,27 +35,48 @@ public class StepDefinitions {
 
     @Then("the ID field is never null for all items")
     public void theIDFieldIsNeverNullForAllItems() {
+        for (Data d : rawResponse.response.data) {
+            assertNotNull(d.getId());
+        }
     }
 
     @And("the ID field is never empty for all items")
     public void theIDFieldIsNeverEmptyForAllItems() {
+        for (Data d : rawResponse.response.data) {
+            assertNotEquals("", d.getId());
+        }
     }
 
     @And("the segment_type field is {string} for all items")
-    public void theSegment_typeFieldIsForAllItems(String arg0) {
+    public void theSegmentTypeFieldIsForAllItems(String input) {
+        for (Data d : rawResponse.response.data) {
+            assertEquals(input, d.getSegmentType());
+        }
     }
 
     @Then("the primary title list is never null for all items")
     public void thePrimaryTitleListIsNeverNullForAllItems() {
+        for (Data d : rawResponse.response.data) {
+            assertNotNull(d.getTitleList().getPrimary());
+        }
     }
 
     @And("the primary title list is never empty for all items")
     public void thePrimaryTitleListIsNeverEmptyForAllItems() {
+        for (Data d : rawResponse.response.data) {
+            assertNotEquals(d.getTitleList().getPrimary(), "");
+        }
     }
 
     @Then("only one track reports true for now_playing")
     public void onlyOneTrackReportsTrueForNow_playing() {
-
+        int count = 0;
+        for (Data d : rawResponse.response.data) {
+            if (d.getOffset().getNowPlaying()) {
+                count++;
+            }
+        }
+        assertEquals(1, count);
     }
 
     @Then("the response header has a valid date")
